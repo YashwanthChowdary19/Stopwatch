@@ -1,4 +1,4 @@
-# 🕐 IST Stopwatch
+# 🕐 ZenTimer
 
 A modern, feature-rich stopwatch application built with Flask and designed for Indian Standard Time (IST) with automatic daily reset, session tracking, and beautiful glassmorphism UI.
 
@@ -148,53 +148,12 @@ ist-stopwatch/
 - **Date Filtering**: Search by specific dates
 - **Responsive**: Scrollable on mobile devices
 
-## 🌐 Deployment
 
-### Render.com (Recommended)
-1. Fork this repository
-2. Sign up at [render.com](https://render.com)
-3. Create new Web Service
-4. Connect your GitHub repository
-5. Set build command: `pip install -r requirements.txt`
-6. Set start command: `gunicorn app:app`
-7. Deploy!
 
-### Railway.app
-1. Connect GitHub repository
-2. Auto-deploy on push
-3. Get live URL instantly
 
-### PythonAnywhere
-1. Upload files to PythonAnywhere
-2. Set up WSGI configuration
-3. Configure static files
-4. Deploy to live server
 
-## 🔧 Configuration
 
-### Environment Variables
-```bash
-FLASK_APP=app.py
-FLASK_ENV=production
-```
 
-### Customization
-- **Timezone**: Modify IST timezone in `app.py`
-- **Storage**: Change `DATA_FILE` path for different storage location
-- **UI Colors**: Update CSS variables in `static/style.css`
-
-## 🐛 Troubleshooting
-
-### Common Issues
-1. **Port already in use**: Change port in `app.py`
-2. **Storage file not found**: App creates `storage.json` automatically
-3. **Timezone issues**: Ensure server is set to IST
-
-### Debug Mode
-```bash
-export FLASK_DEBUG=1
-python app.py
-```
 
 ## 🤝 Contributing
 

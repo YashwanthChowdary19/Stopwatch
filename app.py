@@ -147,6 +147,25 @@ def api_stop():
 	return jsonify({"ok": True})
 
 
+@app.route('/api/reset', methods=['POST'])
+def api_reset():
+	data = load_data()
+	now = now_ist()
+	today_start = start_of_day_ist(now)
+	
+	# Only remove today's sessions, keep historical data
+	data['sessions'] = [s for s in data.get('sessions', []) 
+					   if from_iso(s['start']) < today_start]
+	
+	# Stop if running
+	if data.get('running'):
+		data['running'] = False
+		data['current_start'] = None
+	
+	save_data(data)
+	return jsonify({"ok": True, "message": "Today's timer reset completed"})
+
+
 @app.route('/api/status', methods=['GET'])
 def api_status():
 	data = load_data()
@@ -199,15 +218,22 @@ def api_reports():
 	year_start, year_end = year_bounds_ist(now)
 	year_ms = compute_total_ms_in_window(sessions, year_start, year_end, running, current_start)
 
-	def fmt_hours(ms: int) -> str:
-		hours = ms / 3600000.0
-		return f"{hours:.2f}h"
+	def fmt_time_breakdown(ms: int) -> dict:
+		total_seconds = ms // 1000
+		hours = total_seconds // 3600
+		minutes = (total_seconds % 3600) // 60
+		seconds = total_seconds % 60
+		return {
+			"hours": f"{hours} hrs",
+			"minutes": f"{minutes} min", 
+			"seconds": f"{seconds} sec"
+		}
 
 	return jsonify({
-		"today": fmt_hours(today_ms),
-		"week": fmt_hours(week_ms),
-		"month": fmt_hours(month_ms),
-		"year": fmt_hours(year_ms)
+		"today": fmt_time_breakdown(today_ms),
+		"week": fmt_time_breakdown(week_ms),
+		"month": fmt_time_breakdown(month_ms),
+		"year": fmt_time_breakdown(year_ms)
 	})
 
 

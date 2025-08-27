@@ -47,6 +47,12 @@ button[disabled] { filter: grayscale(0.4) brightness(0.9); cursor: not-allowed; 
 .stat-label { color: #b8c6d8; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8; }
 .stat-value { font-size: 30px; font-weight: 700; margin-top: 8px; background: linear-gradient(135deg, #e7eef7, #b8c6d8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
+/* Time Breakdown */
+.time-breakdown { display: flex; flex-direction: column; gap: 4px; }
+.time-breakdown .hours { font-size: 24px; font-weight: 700; color: #22c55e; }
+.time-breakdown .minutes { font-size: 20px; font-weight: 600; color: #f59e0b; }
+.time-breakdown .seconds { font-size: 16px; font-weight: 500; color: #ef4444; }
+
 /* History */
 .history { margin-top: 24px; }
 .history h2 { font-size: 20px; margin: 0 0 12px; color: #dfe9f6; font-weight: 600; }

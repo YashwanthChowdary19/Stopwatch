@@ -13,7 +13,7 @@
 	<div class="container">
 		<header class="app-header">
 			<div class="title-wrap">
-				<h1>Stopwatch</h1>
+				<h1>ZenTimer</h1>
 				<p class="subtitle">Indian Standard Time • Auto reset at 12:00 AM</p>
 			</div>
 		</header>
@@ -29,7 +29,7 @@
 				<div class="controls">
 					<button id="startBtn" class="btn primary">▶ Start</button>
 					<button id="stopBtn" class="btn danger" disabled>■ Stop</button>
-					<button id="resetBtn" class="btn ghost" title="Resets UI at midnight automatically">↺ Reset (UI)</button>
+					<button id="resetBtn" class="btn ghost" title="Resets UI at midnight automatically">↺ Reset</button>
 					<button id="miniBtn" class="btn ghost" title="Show small draggable timer">▣ Mini</button>
 				</div>
 			</div>
@@ -38,19 +38,43 @@
 		<section class="reports-grid">
 			<div class="card glass stat">
 				<div class="stat-label">Today</div>
-				<div class="stat-value" id="todayTotal">0h</div>
+				<div class="stat-value">
+					<div class="time-breakdown">
+						<span class="hours" id="todayHours">0 hrs</span>
+						<span class="minutes" id="todayMinutes">0 min</span>
+						<span class="seconds" id="todaySeconds">0 sec</span>
+					</div>
+				</div>
 			</div>
 			<div class="card glass stat">
 				<div class="stat-label">This Week</div>
-				<div class="stat-value" id="weekTotal">0h</div>
+				<div class="stat-value">
+					<div class="time-breakdown">
+						<span class="hours" id="weekHours">0 hrs</span>
+						<span class="minutes" id="weekMinutes">0 min</span>
+						<span class="seconds" id="weekSeconds">0 sec</span>
+					</div>
+				</div>
 			</div>
 			<div class="card glass stat">
 				<div class="stat-label">This Month</div>
-				<div class="stat-value" id="monthTotal">0h</div>
+				<div class="stat-value">
+					<div class="time-breakdown">
+						<span class="hours" id="monthHours">0 hrs</span>
+						<span class="minutes" id="monthMinutes">0 min</span>
+						<span class="seconds" id="monthSeconds">0 sec</span>
+					</div>
+				</div>
 			</div>
 			<div class="card glass stat">
 				<div class="stat-label">This Year</div>
-				<div class="stat-value" id="yearTotal">0h</div>
+				<div class="stat-value">
+					<div class="time-breakdown">
+						<span class="hours" id="yearHours">0 hrs</span>
+						<span class="minutes" id="yearMinutes">0 min</span>
+						<span class="seconds" id="yearSeconds">0 sec</span>
+					</div>
+				</div>
 			</div>
 		</section>
 

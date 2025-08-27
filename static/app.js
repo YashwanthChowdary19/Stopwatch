@@ -3,10 +3,6 @@
 	const startBtn = document.getElementById('startBtn');
 	const stopBtn = document.getElementById('stopBtn');
 	const resetBtn = document.getElementById('resetBtn');
-	const todayTotalEl = document.getElementById('todayTotal');
-	const weekTotalEl = document.getElementById('weekTotal');
-	const monthTotalEl = document.getElementById('monthTotal');
-	const yearTotalEl = document.getElementById('yearTotal');
 	const historyBody = document.getElementById('historyBody');
 	const progressCircle = document.getElementById('progressCircle');
 	const historyToggle = document.getElementById('historyToggle');
@@ -106,10 +102,25 @@
 	}
 
 	function setTotals(t){
-		todayTotalEl.textContent = t.today;
-		weekTotalEl.textContent = t.week;
-		monthTotalEl.textContent = t.month;
-		yearTotalEl.textContent = t.year;
+		// Update Today
+		document.getElementById('todayHours').textContent = t.today.hours;
+		document.getElementById('todayMinutes').textContent = t.today.minutes;
+		document.getElementById('todaySeconds').textContent = t.today.seconds;
+		
+		// Update Week
+		document.getElementById('weekHours').textContent = t.week.hours;
+		document.getElementById('weekMinutes').textContent = t.week.minutes;
+		document.getElementById('weekSeconds').textContent = t.week.seconds;
+		
+		// Update Month
+		document.getElementById('monthHours').textContent = t.month.hours;
+		document.getElementById('monthMinutes').textContent = t.month.minutes;
+		document.getElementById('monthSeconds').textContent = t.month.seconds;
+		
+		// Update Year
+		document.getElementById('yearHours').textContent = t.year.hours;
+		document.getElementById('yearMinutes').textContent = t.year.minutes;
+		document.getElementById('yearSeconds').textContent = t.year.seconds;
 	}
 
 	async function refreshAll(){
@@ -141,7 +152,8 @@
 		await refreshAll();
 	});
 	resetBtn.addEventListener('click', async () => {
-		baseElapsedMs = 0; startedAtMs = null; setDisplay(0);
+		await api('/api/reset', { method: 'POST', body: JSON.stringify({}) });
+		await refreshAll();
 	});
 
 	// Toggle history panel
