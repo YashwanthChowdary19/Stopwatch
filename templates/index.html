@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>IST Stopwatch</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+	<div class="container">
+		<header class="app-header">
+			<div class="title-wrap">
+				<h1>Stopwatch</h1>
+				<p class="subtitle">Indian Standard Time • Auto reset at 12:00 AM</p>
+			</div>
+		</header>
+
+		<section class="timer card glass">
+			<div class="timer-layout">
+				<div class="circle" id="progressCircle">
+					<div class="circle-inner">
+						<div id="display">00:00:00</div>
+						<div class="hint">Today</div>
+					</div>
+				</div>
+				<div class="controls">
+					<button id="startBtn" class="btn primary">▶ Start</button>
+					<button id="stopBtn" class="btn danger" disabled>■ Stop</button>
+					<button id="resetBtn" class="btn ghost" title="Resets UI at midnight automatically">↺ Reset (UI)</button>
+					<button id="miniBtn" class="btn ghost" title="Show small draggable timer">▣ Mini</button>
+				</div>
+			</div>
+		</section>
+
+		<section class="reports-grid">
+			<div class="card glass stat">
+				<div class="stat-label">Today</div>
+				<div class="stat-value" id="todayTotal">0h</div>
+			</div>
+			<div class="card glass stat">
+				<div class="stat-label">This Week</div>
+				<div class="stat-value" id="weekTotal">0h</div>
+			</div>
+			<div class="card glass stat">
+				<div class="stat-label">This Month</div>
+				<div class="stat-value" id="monthTotal">0h</div>
+			</div>
+			<div class="card glass stat">
+				<div class="stat-label">This Year</div>
+				<div class="stat-value" id="yearTotal">0h</div>
+			</div>
+		</section>
+
+		<section class="history card glass">
+			<div class="history-header" style="display:flex; gap:12px; align-items:center; justify-content: space-between; flex-wrap: wrap;">
+				<h2 style="margin:0;">Session History</h2>
+				<div style="display:flex; gap:8px; align-items:center;">
+					<input type="date" id="historyDate" class="input" />
+					<button id="historyToggle" class="btn ghost">Show History</button>
+				</div>
+			</div>
+			<div class="table-wrap" id="historyPanel" style="display:none;">
+				<table>
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Start (IST)</th>
+							<th>Stop (IST)</th>
+							<th>Duration</th>
+						</tr>
+					</thead>
+					<tbody id="historyBody"></tbody>
+				</table>
+			</div>
+		</section>
+	</div>
+
+	<!-- Draggable Mini Timer Overlay -->
+	<div id="miniOverlay" class="mini-overlay" style="display:none;">
+		<div class="mini-header" id="miniDragHandle">Stopwatch</div>
+		<div class="mini-body" id="miniTime">00:00:00</div>
+		<button class="mini-close" id="miniClose" title="Close">×</button>
+	</div>
+
+	<script src="/static/app.js"></script>
+</body>
+</html>
